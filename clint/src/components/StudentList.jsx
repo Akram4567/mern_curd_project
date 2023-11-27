@@ -35,11 +35,17 @@ const deleteData = async(id) => {
    }else{
     return (
         <>
-            <div className='container mx-auto mt-16'>
 
-            <div className="overflow-x-auto">
-                <table className="table">
-                    
+            <div className='container mx-auto'>
+                
+                    <h1 className='grid justify-items-center mt-24 font-sans font-bold text-[34px]'>Registered Student</h1>
+                
+                
+
+            <div className="overflow-x-auto ">
+            
+                <table className="table mt-8">
+                
                     <thead>
                     <tr className="bg-yellow-400">
                         

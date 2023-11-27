@@ -106,6 +106,7 @@ const RegistrationForm = () => {
         <div>
             
             <div className='container mx-auto mt-16'>
+               
             <input value={formValue.firstName} onChange={(e)=>setData("firstName",e.target.value)} type="text" placeholder="FirstName" className="m-6 input input-bordered input-primary w-full max-w-xs" />
             <input value={formValue.lastName} onChange={(e)=>setData("lastName",e.target.value)} type="text" placeholder="LastName" className="m-6 input input-bordered input-primary w-full max-w-xs" />
             <input value={formValue.gender} onChange={(e)=>setData("gender",e.target.value)} type="text" placeholder="Gender" className="m-6 input input-bordered input-primary w-full max-w-xs" />
