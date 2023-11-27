@@ -1,101 +1,64 @@
 import axios from 'axios'
 
-
-
-// CreateStudent Request
+// Create Request
 export async function createStudent(postBody) {
+    const res = await axios.post("http://localhost:5080/api/v1/createStudent",postBody)
     try{
-        const res = await axios.post("http://localhost:5080/api/v1/createStudent",postBody)
-        return res.status
-        
+        return res
     }catch(e) {
-
-        return e
-
+        console.log(e)
     }
 }
 
 
 
-// ReadStudent Request
+
+
 export async function readStudent() {
+    const res = await axios.get("http://localhost:5080/api/v1/readStudent")
     try{
-        const res = await axios.get("http://localhost:5080/api/v1/readStudent")
-        
-        
-        
-       
-       return res.data.data
-        
-        
+        return res.data.data
     }catch(e) {
-
-        return e
-
-    }
-}
-
-
-
-// ReadStudentById Request
-// export async function readStudentById(id) {
-//     try{
-//         const res = await axios.get("http://localhost:5080/api/v1/readStudentById"+id)
-//         // console.log(res)
-//         const jdata = await res.json()
-//         return jdata['data'][0]
-        
-//     }catch(e) {
-
-//         return e
-
-//     }
-// }
-
-
-
-
-export async function readStudentById(id){
-    try {
-        let res=await fetch("http://localhost:5080/api/v1/readStudentById"+id);
-        let JSONData=await res.json();
-        return JSONData['data'][0];
-        console.log(JSONData)
-    }catch (e) {
-        return []
+        console.log(e)
     }
 }
 
 
 
 
-// UpdateStudent Request
-export async function updateStudent(postBody,id) {
+
+export async function readStudentById(id) {
+    const res = await axios.get("http://localhost:5080/api/v1/readStudentById/"+id)
     try{
-        const res = await axios.post("http://localhost:5080/api/v1/updateStudent/"+id,postBody)
+        // alert(JSON.stringify(res.data.data.firstName))
+        return res.data.data
+    }catch(e) {
+        console.log(e)
+    }
+}
+
+
+
+
+
+export async function updateStudent(id,postBody) {
+    const res = await axios.post("http://localhost:5080/api/v1/updateStudent/"+id,postBody)
+    try{
+        
         return res
-        
     }catch(e) {
-
-        return  false
-
+        console.log(e)
     }
 }
 
 
 
-// DeleteStudent Request
+
 export async function deleteStudent(id) {
+    const res = await axios.delete("http://localhost:5080/api/v1/deleteStudent/"+id)
     try{
-        const res = await axios.delete("http://localhost:5080/api/v1/deleteStudent/"+id,)
         return res
-        
     }catch(e) {
-
-        return e
-
+        console.log(e)
     }
 }
-
-
-

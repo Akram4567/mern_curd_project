@@ -5,9 +5,10 @@ const Student = require("../models/student");
 exports.createStudent = async(req,res) => {
     try{
         const reqBody = req.body;
-        console.log(reqBody)
+        
         
         const newStudent = await Student.create(reqBody)
+        console.log("Data is created",newStudent)
         res.status(200).json({status:'success',data:newStudent})
 
     }catch(e) {
@@ -23,7 +24,9 @@ exports.readStudent = async(req,res) => {
     try{
         const reqBody = req.body;
         
-        const studentData = await Student.find(reqBody)
+        
+        const studentData = await Student.find()
+        console.log("All data is found")
         res.status(200).json({status:'success',data:studentData})
         
 
@@ -37,15 +40,22 @@ exports.readStudent = async(req,res) => {
 // Read StudentById
 exports.readStudentById = async(req,res) => {
     try{
-        let id = req.params.id
-        
-        
-    const studentData = await Student.find({_id:id})
-        res.status(200).json({status:'success',data:studentData})
-        
+        const id = req.params.id
 
+        const studentData = await Student.findOne({_id:id})
+            if(studentData) {
+                console.log("Data is found by id",studentData)
+                res.status(200).json({status:'success',data:studentData})
+            }else {
+                res.status(200).json({status:"fail",data:e})
+                console.log("Data is not found by id")
+            }
+
+
+        
     }catch(e) {
         res.status(200).json({status:"fail",data:e})
+        console.log("Data is not found by id")
     }
 };
 
@@ -56,9 +66,17 @@ exports.updateStudent = async(req,res) => {
     try{
         const id = req.params.id
         const reqBody = req.body
-        
+
         const studentData = await Student.updateOne({_id:id},reqBody)
-        res.status(200).json({status:'success',data:studentData})
+            if(studentData.modifiedCount === 1) {
+                console.log("Data is updated by id",id,reqBody,studentData)
+                res.status(200).json({status:'success',data:studentData})
+                
+            }else {
+                res.status(200).json({status:"fail",data:e})
+            }
+
+        
 
     }catch(e) {
         res.status(200).json({status:"fail",data:e})
@@ -75,7 +93,9 @@ exports.deleteStudent = async(req,res) => {
         
         
         const studentData = await Student.deleteOne({_id:id})
+        console.log("Data is deleted by id",id,studentData)
         res.status(200).json({status:'success',data:studentData})
+        
 
     }catch(e) {
         res.status(200).json({status:"fail",data:e})

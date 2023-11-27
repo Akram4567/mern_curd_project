@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navber = () => {
     return (
@@ -8,8 +9,9 @@ const Navber = () => {
   </div>
   <div className="flex-none">
     <ul className="menu menu-horizontal px-1">
-      <li><a>Link</a></li>
-      <li><a>Link</a></li>
+      <li></li>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/registrationForm">Registration</NavLink></li>
     </ul>
   </div>
 </div>

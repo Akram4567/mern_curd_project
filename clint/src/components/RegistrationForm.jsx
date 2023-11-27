@@ -37,7 +37,7 @@ const RegistrationForm = () => {
     
     const FillForm =async (id) => {
        let res= await readStudentById(id)
-       console.log(res)
+    //    alert(JSON.stringify(res.firstName))
        setformValue( 
     {
         firstName:res['firstName'],
@@ -85,7 +85,7 @@ const RegistrationForm = () => {
                 }
             }
             else{
-                let res=await updateStudent(formValue,UpdateID);
+                let res=await updateStudent(UpdateID,formValue);
                 console.log(formValue)
                 if(res){
                     // toast.success("Update Request Completed");
